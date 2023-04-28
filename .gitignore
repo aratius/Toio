@@ -77,8 +77,3 @@ toio-sdk/
 WebGLTemplates/
 ble-plugin-unity/
 Unity.VisualScripting.Generated
-UniTask/*.meta
-toio-sdk/*.meta
-WebGLTemplates/*.meta
-ble-plugin-unity/*.meta
-Unity.VisualScripting.Generated/*.meta
