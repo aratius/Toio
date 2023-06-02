@@ -21,7 +21,7 @@ public class MyMidiScene : MonoBehaviour
   readonly float REACH_THRESHOLD = 10f;
 
   /// <summary>
-  /// 0-1に正規化した値を返すとステージ座標に変換するsute-zizahyounihenkannsuru
+  /// 0-1に正規化した値を返すとステージ座標に変換する
   /// </summary>
   /// <param name="x"></param>
   /// <returns></returns>
@@ -65,7 +65,6 @@ public class MyMidiScene : MonoBehaviour
   async void Led(Cube c)
   {
     Debug.Log("led");
-    // c.TurnLedOn(255, 255, 255, 200).Exec();
     c.TurnLedOn(255, 255, 255, 200);
   }
 
