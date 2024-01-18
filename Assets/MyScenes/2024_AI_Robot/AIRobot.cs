@@ -207,7 +207,7 @@ public class AIRobot : MonoBehaviour
       float power = Mathf.Pow((500f - dist) / 500f, 2f);
       power = Mathf.Max(power, 0.2f);
       float direction = 1f;
-      float interval = 1f;
+      float interval = dist < 200 ? 0.8f : 1f;
       if ((float)(Time.frameCount % (interval * FPS)) * 2f < (float)(interval * FPS)) direction = -1f;
       target.MoveRaw((int)(50f * power * direction), (int)(50f * power * -direction), 1000);
 
