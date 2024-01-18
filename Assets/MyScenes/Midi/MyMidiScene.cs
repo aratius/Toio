@@ -52,6 +52,9 @@ public class MyMidiScene : MonoBehaviour
     for (int i = 0; i < cubeManager.navigators.Count; i++)
     {
       CubeNavigator cn = cubeManager.navigators[i];
+      double x = MyMidiScene.GetX(((float)i / (float)(cubeManager.navigators.Count - 1)));
+      double y = MyMidiScene.GetY(.5f);
+      cn.Navi2Target(x, y).Exec();
       cn.Update();
     }
   }
@@ -74,29 +77,29 @@ public class MyMidiScene : MonoBehaviour
     // Loop on each MIDI events
     foreach (MPTKEvent mptkEvent in mptkEvents)
     {
-        // Log if event is a note on
-        if (mptkEvent.Command == MPTKCommand.NoteOn)
+      // Log if event is a note on
+      if (mptkEvent.Command == MPTKCommand.NoteOn)
+      {
+        Debug.Log($"Note on Time:{mptkEvent.RealTime} millisecond  Note:{mptkEvent.Value}  Duration:{mptkEvent.Duration} millisecond  Velocity:{mptkEvent.Velocity}");
+        if (mptkEvent.Value == 82)
         {
-            Debug.Log($"Note on Time:{mptkEvent.RealTime} millisecond  Note:{mptkEvent.Value}  Duration:{mptkEvent.Duration} millisecond  Velocity:{mptkEvent.Velocity}");
-            if(mptkEvent.Value == 82)
-            {
-              Rotate(cubeManager.navigators[0], 90, 0, cubeManager.navigators);
-              Led(cubeManager.syncCubes[0]);
-            }
-            else if(mptkEvent.Value == 42)
-            {
-              Rotate(cubeManager.navigators[1], 45, 1, cubeManager.navigators);
-              Led(cubeManager.syncCubes[1]);
-            }
-            else if(mptkEvent.Value == 70)
-            {
-              Rotate(cubeManager.navigators[2], 90, 2, cubeManager.navigators);
-              Led(cubeManager.syncCubes[2]);
-            }
+          Rotate(cubeManager.navigators[0], 90, 0, cubeManager.navigators);
+          Led(cubeManager.syncCubes[0]);
         }
+        else if (mptkEvent.Value == 42)
+        {
+          Rotate(cubeManager.navigators[1], 45, 1, cubeManager.navigators);
+          Led(cubeManager.syncCubes[1]);
+        }
+        else if (mptkEvent.Value == 70)
+        {
+          Rotate(cubeManager.navigators[2], 90, 2, cubeManager.navigators);
+          Led(cubeManager.syncCubes[2]);
+        }
+      }
 
-        // Uncomment to display all MIDI events
-        // Debug.Log(mptkEvent.ToString());
+      // Uncomment to display all MIDI events
+      // Debug.Log(mptkEvent.ToString());
     }
   }
 

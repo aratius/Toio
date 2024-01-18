@@ -77,3 +77,6 @@ toio-sdk/
 WebGLTemplates/
 ble-plugin-unity/
 Unity.VisualScripting.Generated
+
+OpenCv*/
+OpenCV*/

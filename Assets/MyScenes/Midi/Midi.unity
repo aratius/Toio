@@ -671,7 +671,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   quantization: 0
-  playOnStart: 1
+  playOnStart: 0
   replayMidi: 1
   stopMidi: 0
   midiIsPlaying: 1
@@ -906,7 +906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420f90cdea06441e4b644abbac9e786b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 1
 --- !u!1001 &879129548
 PrefabInstance:
   m_ObjectHideFlags: 0

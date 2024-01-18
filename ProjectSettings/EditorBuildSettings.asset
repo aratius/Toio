@@ -8,4 +8,181 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/toio-sdk/Tutorials/1.Basic/0.BasicScene/0.BasicScene.unity
     guid: e6ea298340acd41fd8971c8ed14186c5
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/3.Advanced-Navigator/0.BasicScene/0.BasicScene.unity
+    guid: d5363efeb16db9c3dab4f66f782a9067
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/2.Advanced-CubeHandle/0.BasicScene/0.BasicScene.unity
+    guid: 0bc4b6843e7678691b6867ea90854349
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/2.Advanced-CubeHandle/1.MoveScene/1.MoveScene.unity
+    guid: 9c24d9f560b44fa5a849251370ec2a29
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/1.Basic/1.Move/1.MoveScene.unity
+    guid: b93aece0637444ddca80009dcac53bed
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/3.Advanced-Navigator/1.Navi2TargetScene/1.Navi2TargetScene.unity
+    guid: 64a71c4dec0dd148d8e90176d32fae5f
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/3.Advanced-Navigator/2.NaviAwayTargetScene/2.NaviAwayTargetScene.unity
+    guid: e1430529d7dc311a6822b95428346e39
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/2.Advanced-CubeHandle/2.OneShotScene/2.OneShotScene.unity
+    guid: 619e90f8ac25f6f29b3e89b06af647d1
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/1.Basic/2.Sound/2.SoundScene.unity
+    guid: 38011103fa2564a5889f0493178a5716
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/3.Advanced-Navigator/3.BoidsScene/3.BoidScene.unity
+    guid: c9923944a67d99d61ae8e252d105b211
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/1.Basic/3.LED/3.LEDScene.unity
+    guid: 90266516939d94f92b62c0c1ac731f1e
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/2.Advanced-CubeHandle/3.ToTargetScene/3.ToTargetScene.unity
+    guid: 9a2dbe7b10806f29b89353aa8ee88347
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/3.Advanced-Navigator/4.BoidsAvoidScene/4.BoidsAvoidScene.unity
+    guid: c2db37a9e82cc90c8982125c15fdc6f5
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/1.Basic/4.toioID/4.toioID.unity
+    guid: 4126b427bc3aadf4fa75dd13ac1b6d79
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/1.Basic/5.Event/5.EventScene.unity
+    guid: 551283eaa131f4d2fab781e8376306dc
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/1.Basic/6.MultiCube/6.MultiCubeScene.unity
+    guid: 88c53d618425e4c5ba8cc3dc0c340e5b
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/1.Basic/7.CubeManager/7.CubeManagerScene.unity
+    guid: 75224bbe3847043c88dac4677795022b
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/OCR.Alphabet/AlphabetOCR.unity
+    guid: d0f70e1287fbd6047ac361ee8077b3d6
+  - enabled: 1
+    path: Assets/MyScenes/Basic/Basic.unity
+    guid: 3e1dffc9075db4667b9b40e21a892258
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeDemos/CatchMusic.unity
+    guid: d08fbae9202e8bd4a8b34f7af4647c3d
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/Identifiy_Contours_by_Shape/ContoursByShapeScene.unity
+    guid: 5b0d16f801c31c944bfae4eb77cc390d
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/Document_Scanner/DocumentScannerLobby.unity
+    guid: 318ea96153fce418abd73aa22891b25d
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/Document_Scanner/DocumentScannerScene.unity
+    guid: c273656cfabeda743b708f09ee7be34f
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/2.Advanced-CubeHandle/ex.FollowTargetPole/ex.FollowTargetPole.unity
+    guid: 690fb64a663fc3399a6bf0ddf99128ae
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/Face_Detector/FaceDetectorScene.unity
+    guid: dc53129b9536b4047802944847361339
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/Face_Recognizer/FaceRecognizer.unity
+    guid: 64d6d3bcebc92f14495f16f82bc3841e
+  - enabled: 1
+    path: Assets/MyScenes/FlowField/FlowField.unity
+    guid: c4d2d5c974d574ba8a8ce90adcccb741
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/Grayscale/GrayscaleScene.unity
+    guid: 8afedf331772cd24b9af48b397f95cb0
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/LiveSketch_WebCam/LiveSketchScene.unity
+    guid: a5a11ab1373713a42b4b17072ee63929
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/Lobby/LobbyScene.unity
+    guid: dbcacb8eff72f5b43af892254d87eda7
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/Marker_Detector/MarkerDetectorScene.unity
+    guid: 1d83579c4bfab024a80d40e6207c2158
+  - enabled: 1
+    path: Assets/MyScenes/Midi/Midi.unity
+    guid: 59c3f83140b9f41218f8675c5576361b
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeMVP/MidiLoop.unity
+    guid: 38fc84a8886c344409311c898f5131e2
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_Scenes/preload.unity
+    guid: 6e7f73520e29acb49a961f96a1f574e7
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_Bluetooth/Sample_Bluetooth.unity
+    guid: bdd243c7f6a904d64b9490459837d6cd
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_Circling/Sample_Circling.unity
+    guid: d14c7d4a677f196bca52799b2704943c
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_WebGL/Sample_Circling/Sample_Circling.unity
+    guid: 00afd7592387f4709b006a26eae28f2b
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_ConnectType/Sample_ConnectType.unity
+    guid: d9d29ad1c22f743cc9dfd5f7daee5454
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_Cross/Sample_Cross.unity
+    guid: 5f181eaa4e65a97f0bf72d2b43385528
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_Motor/Sample_Motor.unity
+    guid: e9ff3ad9964966147949b745b57bd0e6
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_MultiMat/Sample_MultiMat.unity
+    guid: 54a4464872f9936029449d5cead45dc4
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_Sensor/Sample_Sensor.unity
+    guid: baeea682c62d1064390ae86ddaf0e5d8
+  - enabled: 1
+    path: Assets/toio-sdk/Tutorials/1.Basic/ex.Sample_UI/Sample_UI.unity
+    guid: 98bd5ae6b715f4479bc228408c356fb5
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_WebGL/Sample_UI/Sample_UI.unity
+    guid: 076f8717a112b440a9716cdb1a89e1f4
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_VisualizeNavigator/Sample_VisualizeNavigator.unity
+    guid: 04c42ef224444524fa259e1edf7cf0fa
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_WebGL/Sample_WebBluetooth_LowLevel/Sample_WebBluetooth_LowLevel.unity
+    guid: 079b375bff30048c0bc95ed0a5411fef
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_WebGL/Sample_WebPlugin_VeryLowLevel/Sample_WebPlugin_VeryLowLevel.unity
+    guid: 3752c40cc132a46cfb259c923b5c977c
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_Scenes/scene1.unity
+    guid: 26e47cd9efdbcc54fa7c336c5a1fd480
+  - enabled: 1
+    path: Assets/toio-sdk/Samples/Sample_Scenes/scene2.unity
+    guid: ecf7fcfafe076dd48ada893735b722f9
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/Builder/ScenesDemonstration.unity
+    guid: d8dc4db628bb7af409231c8d1eab822b
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeMVP/SimpleSpatialStream.unity
+    guid: f1b968371588ed1429bb355b0a98868f
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeMVP/SimplestMidiGenerator.unity
+    guid: 5dd2d493a70cb4c4f8a57fe1c88e8e6d
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeDemos/TestMidiFileLoad.unity
+    guid: c02e619fd5b4367448837274da5f046b
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeDemos/TestMidiFilePlayer.unity
+    guid: ec4a814924685e549a6544b0a555a999
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeDemos/TestMidiFilePlayerMulti.unity
+    guid: 2fb69811e47095542b20c86383b4e6a1
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeDemos/TestMidiFilePlayerScripting.unity
+    guid: 612158ac931d9ea4b9ba2bda0add6caa
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeDemos/TestMidiSpatialization.unity
+    guid: c7a53b06f7a1b754a9694f2101fdc4c1
+  - enabled: 1
+    path: Assets/MidiPlayer/Demo/FreeDemos/TestMidiStream.unity
+    guid: 7438ff6964cbede408a92dbdfdaddb8f
+  - enabled: 1
+    path: Assets/OpenCV+Unity/Demo/Tracking/TrackingScene.unity
+    guid: 111a9059ba67efb47a099e5ffbe159c2
   m_configObjects: {}
