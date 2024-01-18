@@ -18,11 +18,14 @@ public class AIRobot : MonoBehaviour
 
   [SerializeField] ConnectType type;
   [SerializeField] int num;
-  [SerializeField] readonly float CLEAR_THRESHOLD = 90f;
+  [SerializeField] readonly float CLEAR_THRESHOLD = 80f;
   CubeManager cubeManager = new CubeManager();
+  Cube beepCube;
   List<Vector2> startPositions = new List<Vector2>();
   AIRobotScene scene = AIRobotScene.standby;
+  int prevBeepCount = 0;
   readonly int UPDATE_INTERVAL = 100;
+  readonly float FPS = 30;
 
   CubeHandle target
   {
@@ -56,15 +59,17 @@ public class AIRobot : MonoBehaviour
 
   async void Start()
   {
+    Application.targetFrameRate = 30;
     cubeManager = new CubeManager(type);
-    cubeManager.MultiConnect(num);
+    Cube[] cubes = await cubeManager.MultiConnect(num);
     StartStandby();
+    beepCube = cubes[0];
   }
 
   void Update()
   {
     if (players.Count == 0) return;
-    if (Time.frameCount % (int)((float)UPDATE_INTERVAL / (float)1000 * (float)60) == 0)
+    if (Time.frameCount % (int)((float)UPDATE_INTERVAL / (float)1000 * (float)FPS) == 0)
     {
       if (scene == AIRobotScene.standby) StandbyUpdate();
       else if (scene == AIRobotScene.playing) PlayingUpdate();
@@ -73,6 +78,8 @@ public class AIRobot : MonoBehaviour
     if (Input.GetKey(KeyCode.Alpha1)) StartStandby();
     else if (Input.GetKey(KeyCode.Alpha2)) StartPlaying();
     else if (Input.GetKey(KeyCode.Alpha3)) StartClearPerformance();
+    if (Input.GetKeyDown(KeyCode.N))
+      cubeManager.syncCubes[0].PlayPresetSound(0, 255);
   }
 
   async void StartStandby()
@@ -104,8 +111,6 @@ public class AIRobot : MonoBehaviour
   void StartPlaying()
   {
     scene = AIRobotScene.playing;
-    // TODO: 何かある？
-    cubeManager.syncCubes[0].PlayPresetSound(0, 255);
   }
 
   async void StartClearPerformance()
@@ -115,9 +120,31 @@ public class AIRobot : MonoBehaviour
     Debug.Log("### Start clear performance");
     // TODO: 一定時間で強制的に切りたい
     // TODO: クリア音
-    cubeManager.syncCubes[0].PlayPresetSound(9, 255);
+
+    List<Cube.SoundOperation> sound = new List<Cube.SoundOperation>();
+
+    // 音符と休符の設定
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.C6));
+    sound.Add(new Cube.SoundOperation(durationMs: 150, volume: 20, note_number: Cube.NOTE_NUMBER.NO_SOUND));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.C6));
+    sound.Add(new Cube.SoundOperation(durationMs: 150, volume: 20, note_number: Cube.NOTE_NUMBER.NO_SOUND));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.C6));
+    sound.Add(new Cube.SoundOperation(durationMs: 150, volume: 20, note_number: Cube.NOTE_NUMBER.NO_SOUND));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.C6));
+    sound.Add(new Cube.SoundOperation(durationMs: 150, volume: 20, note_number: Cube.NOTE_NUMBER.NO_SOUND));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.C6));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.D6));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.E6));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.F6));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.E6));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.D6));
+    sound.Add(new Cube.SoundOperation(durationMs: 300, volume: 20, note_number: Cube.NOTE_NUMBER.C6));
+
+    // 楽譜を再生
+    beepCube.PlaySound(1, sound.ToArray());
+
     target.MoveRaw(-50, 50, 1000);
-    await UniTask.Delay(3000);
+    await UniTask.Delay(5000);
     target.MoveRaw(0, 0, 1000);
 
     StartStandby();
@@ -164,7 +191,7 @@ public class AIRobot : MonoBehaviour
       dist += Mathf.Sqrt(
         Mathf.Pow((float)(players[i].x - target.x), 2f) + Mathf.Pow((float)(players[i].y - target.y), 2f)
       );
-    Debug.Log(dist);
+    // Debug.Log(dist);
     if (dist < CLEAR_THRESHOLD)
     {
       StartClearPerformance();
@@ -180,19 +207,21 @@ public class AIRobot : MonoBehaviour
       float power = Mathf.Pow((500f - dist) / 500f, 2f);
       power = Mathf.Max(power, 0.2f);
       float direction = 1f;
-      float interval = 1;
-      if ((float)(Time.frameCount % (interval * 60)) < ((float)(interval * 60) * 0.5f)) direction = -1f;
+      float interval = 1f;
+      if ((float)(Time.frameCount % (interval * FPS)) * 2f < (float)(interval * FPS)) direction = -1f;
       target.MoveRaw((int)(50f * power * direction), (int)(50f * power * -direction), 1000);
 
       // 近づいている音
-      if (Time.frameCount % (UPDATE_INTERVAL * 10) == 0)
+      int beepCount = Time.frameCount % (int)(interval * 0.5f * FPS);
+      if (beepCount < prevBeepCount)
       {
-        int note = (int)(power * 60f) + 60;
+        int note = (int)(power * FPS) + 50;
         byte noteByte = System.Convert.ToByte(note);
         List<Cube.SoundOperation> sound = new List<Cube.SoundOperation>();
         sound.Add(new Cube.SoundOperation(100, 255, noteByte));  // note 0-128
-        cubeManager.syncCubes[0].PlaySound(1, sound.ToArray());
+        beepCube.PlaySound(1, sound.ToArray());
       }
+      prevBeepCount = beepCount;
     }
   }
 
