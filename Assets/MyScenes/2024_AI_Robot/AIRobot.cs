@@ -18,12 +18,13 @@ public class AIRobot : MonoBehaviour
 
   [SerializeField] ConnectType type;
   [SerializeField] int num;
-  [SerializeField] readonly float CLEAR_THRESHOLD = 80f;
+  [SerializeField] readonly float CLEAR_THRESHOLD = 40f;
   CubeManager cubeManager = new CubeManager();
   Cube beepCube;
   List<Vector2> startPositions = new List<Vector2>();
   AIRobotScene scene = AIRobotScene.standby;
   int prevBeepCount = 0;
+  float ratio = 1f;
   readonly int UPDATE_INTERVAL = 100;
   readonly float FPS = 30;
 
@@ -75,18 +76,17 @@ public class AIRobot : MonoBehaviour
       else if (scene == AIRobotScene.playing) PlayingUpdate();
       else if (scene == AIRobotScene.clearPerformance) ClearPerformanceUpdate();
     }
-    if (Input.GetKey(KeyCode.Alpha1)) StartStandby();
-    else if (Input.GetKey(KeyCode.Alpha2)) StartPlaying();
-    else if (Input.GetKey(KeyCode.Alpha3)) StartClearPerformance();
-    if (Input.GetKeyDown(KeyCode.N))
-      cubeManager.syncCubes[0].PlayPresetSound(0, 255);
+
+    if (Input.GetKey(KeyCode.Alpha1)) ratio = 1f;
+    else if (Input.GetKey(KeyCode.Alpha2)) ratio = 0.8f;
+    else if (Input.GetKey(KeyCode.Alpha3)) ratio = 0.5f;
   }
 
   async void StartStandby()
   {
     scene = AIRobotScene.standby;
     float dist = 0f;
-    while (dist < 400f)
+    while (dist < 200f)
     {
       startPositions.Clear();
       for (int i = 0; i < num; i++)
@@ -103,6 +103,7 @@ public class AIRobot : MonoBehaviour
         dist += Mathf.Sqrt(
           Mathf.Pow((float)(startPositions[i].x - startPositions[0].x), 2f) + Mathf.Pow((float)(startPositions[i].y - startPositions[0].y), 2f)
         );
+      dist /= num;
     }
     await UniTask.Delay(5000);
     StartPlaying();
@@ -181,7 +182,7 @@ public class AIRobot : MonoBehaviour
     {
       CubeHandle cn = players[i];
       cn.Update();
-      float power = (float)(i + 1) / (float)players.Count;
+      float power = 1f * Mathf.Pow(ratio, i);
       cn.MoveRaw((int)(left * power), (int)(right * power), 1000);
     }
 
@@ -191,7 +192,8 @@ public class AIRobot : MonoBehaviour
       dist += Mathf.Sqrt(
         Mathf.Pow((float)(players[i].x - target.x), 2f) + Mathf.Pow((float)(players[i].y - target.y), 2f)
       );
-    // Debug.Log(dist);
+    dist /= num;
+    Debug.Log(dist);
     if (dist < CLEAR_THRESHOLD)
     {
       StartClearPerformance();
@@ -204,10 +206,10 @@ public class AIRobot : MonoBehaviour
     else
     {
       // TODO: ターゲットを動かす
-      float power = Mathf.Pow((500f - dist) / 500f, 2f);
+      float power = Mathf.Pow((300f - dist) / 300f, 2f);
       power = Mathf.Max(power, 0.2f);
       float direction = 1f;
-      float interval = dist < 200 ? 0.8f : 1f;
+      float interval = dist < 100f ? 0.8f : 1f;
       if ((float)(Time.frameCount % (interval * FPS)) * 2f < (float)(interval * FPS)) direction = -1f;
       target.MoveRaw((int)(50f * power * direction), (int)(50f * power * -direction), 1000);
 
